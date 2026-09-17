@@ -1,0 +1,11 @@
+<app-header title="Hello, World!"></app-header>
+<h1>My Notes</h1>
+
+<ul>
+  <li *ngFor = "let note of notes()">
+    <strong>{{ note.title }}</strong>
+    {{ note.content }}
+    <small>Created at: {{ note.createdAt | date:'short' }}</small>
+  </li>
+</ul>
+<app-footer (subscribeClicked)="handleSubscribeClick()"></app-footer>
