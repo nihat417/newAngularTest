@@ -1,11 +1,5 @@
 <app-header [title]="title"></app-header>
-<h1 (dblclick)="handleTitleClick()">My Notes</h1>
 
-<ul>
-  <li *ngFor = "let note of notes()">
-    <strong>{{ note.title }}</strong>
-    {{ note.content }}
-    <small>Created at: {{ note.createdAt | date:'short' }}</small>
-  </li>
-</ul>
+<router-outlet></router-outlet>
+
 <app-footer (subscribeClicked)="handleSubscribeClick()"></app-footer>
