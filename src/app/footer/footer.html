@@ -1,4 +1,7 @@
-<footer>
-    <p>&copy; 2023 My Notes. All rights reserved.</p>
+<footer [ngClass]="{footer:username != ''}">
+    @if(username){
+        <p [ngStyle]="{'color': username != '' ? 'red' : 'black'}">&copy; 2023 My Notes. All rights reserved. hello {{ username }}</p>
+    }
+    <input type="text" [(ngModel)]="username" placeholder="Enter your email"/>
     <button class="bg-amber-950" (click)="onSubscribeClick()">Subscribe</button>
 </footer>

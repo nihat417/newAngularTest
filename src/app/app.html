@@ -1,5 +1,5 @@
-<app-header title="Hello, World!"></app-header>
-<h1>My Notes</h1>
+<app-header [title]="title"></app-header>
+<h1 (dblclick)="handleTitleClick()">My Notes</h1>
 
 <ul>
   <li *ngFor = "let note of notes()">

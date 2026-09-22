@@ -16,6 +16,12 @@ export class App {
   handleSubscribeClick() {
     alert('Subscribe button clicked!');
   }
+
+  title = "My assasasa";
+
+  handleTitleClick(){
+    alert('Title clicked!');
+  }
   protected readonly notes = signal<Note[]>([
     {
       id: 1,
