@@ -1,1 +1,18 @@
-<p>home works!</p>
+<h1 (dblclick)="handleTitleClick()">My Notes</h1>
+
+<ul>
+    @for (note of notes; track note.id) {
+    <li>
+      <strong>{{ note.title }}</strong>
+      {{ note.content }}
+      <small>Created at: {{ note.createdAt | date:'short' }}</small>
+    </li>
+  }  
+</ul>
+
+<h1 class="text-2xl font-bold mb-8">Add notes</h1>
+
+<input type="text" [(ngModel)]="newNoteTitle().title" placeholder="Enter note"/>
+<textarea class="border-4 border-amber-400" [(ngModel)]="newNoteTitle().content" placeholder="Enter note content"></textarea>
+
+<button (click)="addNote()" class="bg-red-500 text-white">Add Note</button>

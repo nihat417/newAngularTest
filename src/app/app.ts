@@ -16,6 +16,6 @@ export class App {
   handleSubscribeClick() {
     alert('Subscribe button clicked!');
   }
-  title = "My assasasa";
+  title = "My Notes App";
 
 }
