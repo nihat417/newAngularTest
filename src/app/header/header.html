@@ -1,3 +1,26 @@
-<header>
-    <h1>{{ title }}</h1>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" routerLink="/" aria-label="My Notes — главная">
+      <span class="brand-mark" aria-hidden="true">N</span>
+      <span>{{ title }}</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Основная навигация">
+      <a
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        ariaCurrentWhenActive="page"
+      >
+        Заметки
+      </a>
+      <a
+        routerLink="/about"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        О приложении
+      </a>
+    </nav>
+  </div>
 </header>

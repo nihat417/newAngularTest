@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 
@@ -12,10 +12,9 @@ import {Footer} from "./footer/footer";
   styleUrl: './app.css'
 })
 export class App {
-  
   handleSubscribeClick() {
     alert('Subscribe button clicked!');
   }
-  title = "My Notes App";
 
+  title = 'My Notes App';
 }

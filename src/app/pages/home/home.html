@@ -1,18 +1,65 @@
-<h1 (dblclick)="handleTitleClick()">My Notes</h1>
+<section class="page-intro">
+  <span class="eyebrow">Личное пространство</span>
+  <h1 (dblclick)="handleTitleClick()">Мои заметки</h1>
+  <p>Сохраняйте идеи, задачи и важные мысли в одном месте.</p>
+</section>
 
-<ul>
-    @for (note of notes; track note.id) {
-    <li>
-      <strong>{{ note.title }}</strong>
-      {{ note.content }}
-      <small>Created at: {{ note.createdAt | date:'short' }}</small>
-    </li>
-  }  
-</ul>
+<div class="notes-layout">
+  <section class="notes-panel" aria-labelledby="notes-title">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">Коллекция</span>
+        <h2 id="notes-title">Все заметки</h2>
+      </div>
+      <span class="notes-count">{{ notes.length }}</span>
+    </div>
 
-<h1 class="text-2xl font-bold mb-8">Add notes</h1>
+    <div class="notes-grid">
+      @for (note of notes; track note.id) {
+        <article class="note-card">
+          <div class="note-icon" aria-hidden="true">✦</div>
+          <h3>{{ note.title }}</h3>
+          <p>{{ note.content }}</p>
+          <time [attr.datetime]="note.createdAt.toISOString()">
+            {{ note.createdAt | date:'dd MMM yyyy, HH:mm' }}
+          </time>
+        </article>
+      } @empty {
+        <div class="empty-state">
+          <span aria-hidden="true">✎</span>
+          <h3>Заметок пока нет</h3>
+          <p>Создайте первую заметку с помощью формы справа.</p>
+        </div>
+      }
+    </div>
+  </section>
 
-<input type="text" [(ngModel)]="newNoteTitle().title" placeholder="Enter note"/>
-<textarea class="border-4 border-amber-400" [(ngModel)]="newNoteTitle().content" placeholder="Enter note content"></textarea>
+  <aside class="composer" aria-labelledby="composer-title">
+    <span class="eyebrow">Новая идея</span>
+    <h2 id="composer-title">Добавить заметку</h2>
+    <p class="composer-copy">Запишите мысль, пока она не потерялась.</p>
 
-<button (click)="addNote()" class="bg-red-500 text-white">Add Note</button>
+    <form (ngSubmit)="addNote()">
+      <label for="note-title">Заголовок</label>
+      <input
+        id="note-title"
+        name="noteTitle"
+        type="text"
+        [(ngModel)]="newNoteTitle().title"
+        placeholder="Например: Идеи для проекта"
+        autocomplete="off"
+      />
+
+      <label for="note-content">Текст заметки</label>
+      <textarea
+        id="note-content"
+        name="noteContent"
+        [(ngModel)]="newNoteTitle().content"
+        placeholder="Опишите вашу идею..."
+        rows="6"
+      ></textarea>
+
+      <button type="submit">Добавить заметку <span aria-hidden="true">→</span></button>
+    </form>
+  </aside>
+</div>

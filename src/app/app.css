@@ -1,0 +1,18 @@
+:host {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 56px 0 72px;
+  flex: 1;
+}
+
+@media (max-width: 560px) {
+  main {
+    padding-top: 36px;
+  }
+}
