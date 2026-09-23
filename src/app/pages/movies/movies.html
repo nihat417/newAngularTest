@@ -1,1 +1,57 @@
-<p>movies works!</p>
+<section class="movies-page">
+  <header class="movies-hero">
+    <span class="eyebrow">Movie Explorer</span>
+    <h1>Найдите фильм на вечер</h1>
+    <p>Введите название, чтобы посмотреть фильмы и годы их выхода.</p>
+  </header>
+
+  <form class="search-form" (ngSubmit)="searchMovies()">
+    <label class="visually-hidden" for="movie-search">Название фильма</label>
+    <div class="search-field">
+      <span aria-hidden="true">⌕</span>
+      <input
+        id="movie-search"
+        name="searchTitle"
+        type="search"
+        [(ngModel)]="searchTitle"
+        minlength="3"
+        placeholder="Например: Interstellar"
+        autocomplete="off"
+      />
+    </div>
+    <button type="submit">Найти</button>
+  </form>
+
+  @if (errorMessage) {
+    <p class="error-message" role="alert">{{ errorMessage }}</p>
+  }
+
+  <div class="results">
+    @if (movies.length > 0) {
+      <div class="results-heading">
+        <h2>Результаты поиска</h2>
+        <span>{{ movies.length }} найдено</span>
+      </div>
+
+      <ul class="movie-grid">
+        @for (movie of movies; track movie.imdbID) {
+          <li class="movie-card">
+            <div class="poster-wrap">
+              <img [src]="movie.Poster" [alt]="'Постер фильма ' + movie.Title" />
+            </div>
+            <div class="movie-info">
+              <h3>{{ movie.Title }}</h3>
+              <p>{{ movie.Year }}</p>
+            </div>
+          </li>
+        }
+      </ul>
+    } @else {
+      <div class="empty-state">
+        <span aria-hidden="true">🎬</span>
+        <h2>Фильмы пока не найдены</h2>
+        <p>Введите название фильма в строку поиска выше.</p>
+      </div>
+    }
+  </div>
+</section>
