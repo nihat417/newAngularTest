@@ -1,0 +1,53 @@
+<aside class="composer" aria-labelledby="composer-title">
+    <span class="eyebrow">Новая идея</span>
+    <h2 id="composer-title">Добавить заметку</h2>
+    <p class="composer-copy">Запишите мысль, пока она не потерялась.</p>
+
+    <form #noteForm="ngForm" (ngSubmit)="addNote(noteForm)">
+      <label for="note-title">Заголовок</label>
+      <input
+        id="note-title"
+        name="noteTitle"
+        type="text"
+        required
+        minlength="3"
+        maxlength="50"
+        #titleRef="ngModel"
+        [(ngModel)]="newNoteTitle().title"
+        placeholder="Например: Идеи для проекта"
+        autocomplete="off"
+      />
+      @if (titleRef.invalid && (titleRef.touched || noteForm.submitted)) {
+        @if (titleRef.hasError('required')) {
+            <small class="error-message">Заголовок обязателен</small>
+        } @else if (titleRef.hasError('minlength')) {
+            <small class="error-message">Минимум 3 символа</small>
+        } @else if (titleRef.hasError('maxlength')) {
+            <small class="error-message">Максимум 50 символов</small>
+        }
+     }
+
+      <label for="note-content">Текст заметки</label>
+      <textarea
+        id="note-content"
+        name="noteContent"
+        [(ngModel)]="newNoteTitle().content"
+        placeholder="Опишите вашу идею..."
+        rows="6"
+        required
+        minlength="5"
+        maxlength="200"
+        #contentRef="ngModel"
+      ></textarea>
+      @if (contentRef.invalid && (contentRef.touched || noteForm.submitted)) {
+        @if (contentRef.hasError('required')) {
+            <small class="error-message">Текст заметки обязателен</small>
+        } @else if (contentRef.hasError('minlength')) {
+            <small class="error-message">Минимум 5 символов</small>
+        } @else if (contentRef.hasError('maxlength')) {
+            <small class="error-message">Максимум 200 символов</small>
+        }
+     }
+      <button type="submit">Добавить заметку <span aria-hidden="true">→</span></button>
+    </form>
+  </aside>

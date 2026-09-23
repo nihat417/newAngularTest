@@ -1,1 +1,7 @@
-<p>note-detail works!</p>
+<h1>Note Detail</h1>
+@if(note){
+    <h2>{{note.title}}</h2>
+    <p>{{note.content}}</p>
+    <em>Created at: {{note.createdAt}}</em>
+}
+

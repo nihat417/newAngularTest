@@ -3,9 +3,11 @@ import { NoteService } from '../../services/noteService';
 import { Note } from '../../models/note.models';
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
+import {RouterLink} from "@angular/router";
+import {NoteAdd} from "../../components/note-add/note-add";
 @Component({
   selector: 'app-home',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink, NoteAdd],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -17,17 +19,5 @@ constructor(private noteService: NoteService) {}
 
   protected get notes(){
     return this.noteService.getNotes();
-  }
-
-  newNoteTitle = signal<Partial<Note>>({
-    title: '',
-    content: '',
-  });
-
-  protected addNote() {
-    const NewNote = this.newNoteTitle();
-    if(!NewNote.title || !NewNote.content)  return;
-    this.noteService.addNotes(NewNote.title, NewNote.content);
-    this.newNoteTitle.set({ title: '', content: '' });
   }
 }
