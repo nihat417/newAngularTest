@@ -1,7 +1,7 @@
 <h1>Note Detail</h1>
 @if(note){
     <h2>{{note.title}}</h2>
-    <p>{{note.content}}</p>
+    <p>{{note.content | noteShorter: 10}}</p>
     <em>Created at: {{note.createdAt}}</em>
 }
 

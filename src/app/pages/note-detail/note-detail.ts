@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import {NoteService} from "../../services/noteService";
 import {ActivatedRoute} from "@angular/router";
 import {CommonModule} from "@angular/common";
+import {NoteShorterPipe} from "../../pipes/note-shorter-pipe";
 @Component({
   selector: 'app-note-detail',
-  imports: [CommonModule],
+  imports: [CommonModule,NoteShorterPipe],
   templateUrl: './note-detail.html',
   styleUrl: './note-detail.css',
 })

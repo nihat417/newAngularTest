@@ -5,9 +5,10 @@ import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {NoteAdd} from "../../components/note-add/note-add";
+import {NoteShorterPipe} from "../../pipes/note-shorter-pipe";
 @Component({
   selector: 'app-home',
-  imports: [FormsModule, CommonModule, RouterLink, NoteAdd],
+  imports: [FormsModule, CommonModule, RouterLink, NoteAdd,NoteShorterPipe],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
